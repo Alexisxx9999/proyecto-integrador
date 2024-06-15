@@ -1,0 +1,44 @@
+GET http://localhost:3000/api/usuario/
+Accept: application/json
+
+###
+GET http://localhost:3000/api/usuario/11
+Accept: application/json
+
+###
+POST  http://localhost:3000/api/usuario/
+Accept: application/json
+
+{
+    "email": "maria.garcia@hotmail.com",
+    "password": "abcdef",
+    "name": "María",
+    "lastname": "García",
+    "created_at": "2024-01-02T00:00:00.000Z",
+    "updated_at": "2024-01-02T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+}
+
+###
+PUT http://localhost:3000/api/usuario/11
+Accept: application/json    
+
+{
+    "email": "maria.garcia@hotmail.com",
+    "password": "abcdef",
+    "name": "María Paz",
+    "lastname": "García Perez",
+    "role": "user",
+    "status": "active",
+    "profile": [],
+    "id": 11,
+    "created_at": "2024-02-28T13:22:12.596Z",
+    "updated_at": "2024-02-28T13:22:12.596Z"
+  }
+  
+###
+DELETE  http://localhost:3000/api/usuario/
+Accept: application/json

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 3,
+    "email": "carlos.rodriguez@yahoo.com",
+    "password": "qwerty",
+    "name": "Carlos",
+    "lastname": "Rodríguez",
+    "created_at": "2024-01-03T00:00:00.000Z",
+    "updated_at": "2024-01-03T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": [
+      "home"
+    ]
+  },
+  {
+    "id": 4,
+    "email": "ana.lopez@outlook.com",
+    "password": "azerty",
+    "name": "Ana",
+    "lastname": "López",
+    "created_at": "2024-01-04T00:00:00.000Z",
+    "updated_at": "2024-01-04T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": [
+      "home"
+    ]
+  },
+  {
+    "id": 5,
+    "email": "luis.sanchez@gmail.com",
+    "password": "654321",
+    "name": "Luis",
+    "lastname": "Sánchez",
+    "created_at": "2024-01-05T00:00:00.000Z",
+    "updated_at": "2024-01-05T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+  },
+  {
+    "id": 6,
+    "email": "laura.martinez@hotmail.com",
+    "password": "fedcba",
+    "name": "Laura",
+    "lastname": "Martínez",
+    "created_at": "2024-01-06T00:00:00.000Z",
+    "updated_at": "2024-01-06T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+  },
+  {
+    "id": 7,
+    "email": "david.gonzalez@yahoo.com",
+    "password": "ytrewq",
+    "name": "David",
+    "lastname": "González",
+    "created_at": "2024-01-07T00:00:00.000Z",
+    "updated_at": "2024-01-07T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+  },
+  {
+    "id": 8,
+    "email": "sara.ramirez@outlook.com",
+    "password": "ytreza",
+    "name": "Sara",
+    "lastname": "Ramírez",
+    "created_at": "2024-01-08T00:00:00.000Z",
+    "updated_at": "2024-01-08T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+  },
+  {
+    "id": 9,
+    "email": "jose.torres@gmail.com",
+    "password": "147258",
+    "name": "José",
+    "lastname": "Torres",
+    "created_at": "2024-01-09T00:00:00.000Z",
+    "updated_at": "2024-01-09T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": []
+  },
+  {
+    "id": 10,
+    "email": "claudia.fernandez@hotmail.com",
+    "password": "147258",
+    "name": "José",
+    "lastname": "Torres",
+    "created_at": "2024-01-09T00:00:00.000Z",
+    "updated_at": "2024-01-09T00:00:00.000Z",
+    "deleted_at": null,
+    "role": "user",
+    "status": "active",
+    "profile": [
+      "home"
+    ]
+  }
+]

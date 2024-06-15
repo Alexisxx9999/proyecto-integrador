@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+
 const cors = require('cors');
 const { checkApiKey } = require('./middlewares/auth');
 const routerApi = require('./routes');
@@ -11,6 +13,7 @@ const {
   boomErrorHandler,
   ormError,
 } = require('./middlewares/error');
+require('./utils/auth'); /*  auth */
 
 app.use(express.json());
 const whitelist = ['htttp://localhost:8080'];
@@ -24,6 +27,10 @@ const options = {
   },
 };
 app.use(cors(options));
+require('./utils/auth'); /*  auth */
+app.use(passport.initialize());
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   res.send('Este es mi primer servidor');
 });

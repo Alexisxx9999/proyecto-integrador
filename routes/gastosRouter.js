@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+
 const GastosService = require('../services/gastosService');
 const validator = require('../middlewares/validator');
 
@@ -30,15 +32,22 @@ router.get('/:id', validator(getGastos, 'params'), async (req, res, next) => {
   }
 });
 
-router.post('/', validator(createGastos, 'body'), async (req, res, next) => {
-  try {
-    const body = req.body;
-    const newGasto = await service.create(body);
-    res.status(201).json(newGasto);
-  } catch (error) {
-    next(error);
-  }
-});
+router.post(
+  '/',
+  passport.authenticate('jwt', {
+    session: false,
+  }),
+  validator(createGastos, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const newGasto = await service.create(body);
+      res.status(201).json(newGasto);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 router.patch(
   '/:id',

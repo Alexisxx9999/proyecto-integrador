@@ -1,4 +1,5 @@
 const express = require('express');
+
 const ingresosService = require('../services/ingresosService');
 const service = new ingresosService();
 const validator = require('../middlewares/validator');
@@ -13,14 +14,18 @@ const {
 /* importaciones */
 
 /* rutas con el objeto router */
-router.get('/', async (req, res, next) => {
-  try {
-    const gastos = await service.find();
-    res.json(gastos);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get(
+  '/',
+
+  async (req, res, next) => {
+    try {
+      const gastos = await service.find();
+      res.json(gastos);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 router.get('/:id', validator(getIngresos, 'params'), async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -30,15 +35,20 @@ router.get('/:id', validator(getIngresos, 'params'), async (req, res, next) => {
     next(error);
   }
 });
-router.post('/', validator(createIngresos, 'body'), async (req, res, next) => {
-  try {
-    const body = req.body;
-    const Newingreso = service.create(body);
-    res.json(Newingreso);
-  } catch (error) {
-    next(error);
-  }
-});
+router.post(
+  '/',
+  /* aqui va el middleware de los roles  */
+  validator(createIngresos, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const Newingreso = service.create(body);
+      res.json(Newingreso);
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 router.patch(
   '/:id',
   validator(updateIngresos, 'body'),

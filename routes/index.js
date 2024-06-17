@@ -19,7 +19,7 @@ function routerApi(app) {
   );
   router.use(
     '/ingresos',
-    passport.authenticate('jwt', { session: false }),
+    /*  passport.authenticate('jwt', { session: false }) */
     ingresosRouter,
   );
   router.use(
@@ -29,15 +29,16 @@ function routerApi(app) {
   );
   router.use(
     '/categorias',
-    passport.authenticate('jwt', { session: false }),
+    /*  passport.authenticate('jwt', { session: false }) */
     categoriasRouter,
   );
   router.use('/auth', authRouter);
   router.use(
     '/dashboard',
+    /*  passport.authenticate('jwt', { session: false }) */
 
     (req, res) => {
-      res.render('dashboard', { title: 'Dashboard', user: req.user });
+      res.render('dashboard', { title: 'Dashboard', users: req.users });
     },
   );
 }

@@ -45,12 +45,12 @@
           </div>
 
           <form
+            id="loginForm"
             class="login100-form validate-form"
             method="post"
             action="/auth/login"
           >
-            <span class="login100-form-title"> </span>
-            Gestor Financiero
+            <span class="login100-form-title">Inicia Sesion</span>
             <div
               class="wrap-input100 validate-input"
               data-validate="Valid email is required: ex@abc.xyz"
@@ -84,17 +84,16 @@
             </div>
 
             <div class="container-login100-form-btn">
-              <button class="login100-form-btn">Login</button>
+              <button class="login100-form-btn" type="submit">Login</button>
             </div>
 
             <div class="text-center p-t-12">
-
-              <a class="txt2" href="/">volver atras </a>
+              <a class="txt2" href="/">volver atras</a>
             </div>
 
             <div class="text-center p-t-136">
-              <a class="txt2" href="#">
-                Create your Account
+              <a class="txt2" href="/register">
+                Crea tu propia cuenta
                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
               </a>
             </div>
@@ -106,6 +105,8 @@
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
+    <script src="js/login.js"></script>
+    {{!  }}
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->

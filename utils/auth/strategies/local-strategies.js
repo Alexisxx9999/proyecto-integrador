@@ -1,28 +1,31 @@
+// localStrategy.js
+
 const { Strategy } = require('passport-local');
 const boom = require('@hapi/boom');
-const UserService = require('../../../services/userService.');
 const bcrypt = require('bcrypt');
+const UserService = require('../../../services/userService.');
+
 const service = new UserService();
 
 const LocalStrategy = new Strategy(
   {
-    usernameField: 'email',
-    passwordField: 'contraseña',
+    usernameField: 'email', // Campo del formulario para el correo electrónico
+    passwordField: 'contraseña', // Campo del formulario para la contraseña
   },
-  async (email, password, done) => {
+  async (email, contraseña, done) => {
     try {
       const user = await service.findByEmail(email);
       if (!user) {
-        done(boom.unauthorized(), false);
+        return done(boom.unauthorized(), false);
       }
-      const isMatch = await bcrypt.compare(password, user.contraseña);
+      const isMatch = await bcrypt.compare(contraseña, user.contraseña);
       if (!isMatch) {
-        done(boom.unauthorized(), false);
+        return done(boom.unauthorized(), false);
       }
-      delete user.dataValues.contraseña;
-      done(null, user);
+      delete user.dataValues.contraseña; // Eliminar la contraseña antes de devolver al usuario
+      return done(null, user); // Autenticación exitosa, devolver el usuario
     } catch (error) {
-      done(error, false);
+      return done(error, false); // Error durante la autenticación
     }
   },
 );

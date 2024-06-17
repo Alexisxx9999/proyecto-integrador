@@ -14,7 +14,7 @@ function routerApi(app) {
   /* router.use('/products', productsRouter); */
   router.use(
     '/users',
-    passport.authenticate('jwt', { session: false }),
+
     usersRouter,
   );
   router.use(
@@ -33,6 +33,13 @@ function routerApi(app) {
     categoriasRouter,
   );
   router.use('/auth', authRouter);
+  router.use(
+    '/dashboard',
+
+    (req, res) => {
+      res.render('dashboard', { title: 'Dashboard', user: req.user });
+    },
+  );
 }
 
 module.exports = routerApi;

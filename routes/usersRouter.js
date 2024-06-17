@@ -7,16 +7,22 @@ const {
   createUserSchema,
   updateUserSchema,
 } = require('../schemas/userSchema');
+const passport = require('passport');
 /* importaciones de modulos o clases de otras carpetas de aqui hacia arriba */
 const service = new userService();
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  const users = await service.find();
-  res.json(users);
-});
+router.get(
+  '/',
+
+  async (req, res, next) => {
+    const users = await service.find();
+    res.json(users);
+  },
+);
 router.get(
   '/:id',
+
   validator(getUserSchema, 'params'),
   async (req, res, next) => {
     try {
@@ -62,9 +68,13 @@ router.patch(
     }
   },
 );
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-  const rta = await service.delete(id);
-  res.json(rta);
-});
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    const { id } = req.params;
+    const rta = await service.delete(id);
+    res.json(rta);
+  },
+);
 module.exports = router;

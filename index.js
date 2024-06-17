@@ -47,7 +47,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 require('./utils/auth'); // Importa configuración de passport
-
+app.use(passport.initialize());
 // Rutas para vistas
 app.get('/', (req, res) => {
   res.render('home', { title: 'Home' });
@@ -60,7 +60,7 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('register', { title: 'Register' });
 });
-app.use(passport.initialize());
+
 // Importa y usa authRouter
 const authRouter = require('./routes/authRouter');
 app.use('/auth', authRouter);

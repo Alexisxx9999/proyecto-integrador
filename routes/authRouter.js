@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const { config } = require('../config/config');
 const UserService = require('../services/userService.');
 const bcrypt = require('bcrypt');
+const { createUserSchema } = require('../schemas/userSchema');
+const validator = require('../middlewares/validator');
 const router = express.Router();
 
 const service = new UserService();
@@ -23,24 +25,22 @@ router.post(
     res.redirect('/api/v1/dashboard'); // Redirigir al dashboard después del login
   },
 );
-router.post('/register', async (req, res, next) => {
-  try {
-    const { email, contraseña, nombre } = req.body;
-    const hash = await bcrypt.hash(contraseña, 10);
 
-    // Crear el nuevo usuario en la base de datos
-    const newUser = await service.create({
-      email,
-      contraseña: hash,
-      nombre,
-    });
+router.post(
+  '/register',
+  validator(createUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
 
-    // Redirigir al usuario al login después del registro exitoso
-    res.redirect('/login');
-  } catch (error) {
-    next(error); // Pasar el error al siguiente middleware de manejo de errores
-  }
-});
+      const newUser = await service.create(body);
+      // Redirigir al usuario al login después del registro exitoso
+      res.redirect('/login');
+    } catch (error) {
+      next(error); // Pasar el error al siguiente middleware de manejo de errores
+    }
+  },
+);
 
 router.get('/logout', (req, res) => {
   req.logout; // Este método es proporcionado por Passport para limpiar la sesión
